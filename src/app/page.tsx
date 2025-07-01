@@ -5,15 +5,18 @@ import Link from 'next/link';
 export default function HomePage() {
   return (
     <main className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Bienvenido a mi portfolio</h1>
+      <h1 className="text-3xl font-bold mb-6">Nelson C.</h1>
 
       <nav className="flex flex-col gap-4">
-        <Link href="/about" className="text-blue-600 hover:underline">
-          Sobre mí
+        <Link href="/services" className="text-blue-600 hover:underline">
+          Services
         </Link>
 
-        <Link href="/contact" className="text-blue-600 hover:underline">
-          Contacto
+        <Link href="/works" className="text-blue-600 hover:underline">
+          Works
+        </Link>
+        <Link href="/blog" className="text-blue-600 hover:underline">
+          Blog
         </Link>
       </nav>
     </main>
