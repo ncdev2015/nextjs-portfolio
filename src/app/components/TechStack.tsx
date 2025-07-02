@@ -69,7 +69,7 @@ export default function TechStack() {
                 return (
                   <div key={tech.name} className="relative">
                     <div
-                      className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 text-center hover:bg-purple-100 hover:border-purple-300 transition-colors duration-200 cursor-pointer"
+                      className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 text-center hover:bg-purple-100 hover:border-purple-300 transition-colors duration-200 cursor-pointer select-none"
                       onClick={() => setOpenIndex(openIndex === id ? null : id)}
                     >
                       {tech.icon && <div className="mb-2">{tech.icon}</div>}

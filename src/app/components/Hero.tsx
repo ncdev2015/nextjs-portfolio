@@ -20,7 +20,7 @@ export default function Hero() {
         <p className="mb-4">{profileDescription1}</p>
         <p className="mb-4">{profileDescription2}</p>
 
-        <div className="mt-6">
+        <div className="mt-6 text-purple-800 font-bold">
           <a
             href="#history"
             className="inline-flex items-center text-blue-600 hover:underline font-medium"

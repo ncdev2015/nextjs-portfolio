@@ -20,7 +20,7 @@ export default function Services() {
 
 		        
 		        {/* Front face */}
-		        <div className="flip-front p-6 h-full overflow-hidden flex flex-col">
+		        <div className="flip-front p-6 h-full overflow-hidden flex flex-col select-none">
 		          <h3 className="text-xl font-semibold mb-2">
 		            {i === 1 ? "Web Development" : i === 2 ? "Mobile Development" : "IT Training"}
 		          </h3>
@@ -30,7 +30,7 @@ export default function Services() {
 		        </div>
 
 		        {/* Back face */}
-		        <div className="flip-back bg-purple-800 text-gray-100 p-6 h-full overflow-hidden flex flex-col rounded-lg">
+		        <div className="flip-back bg-purple-800 text-gray-100 p-6 h-full overflow-hidden flex flex-col rounded-lg select-none">
 		          <h4 className="text-lg font-semibold mb-2">More Info</h4>
 		          <p className="text-base overflow-auto">
 		            {i === 1
@@ -45,7 +45,7 @@ export default function Services() {
 		    </div>
 		  ))}
 		</div>
-		
+
       </section>
 	);
 }
