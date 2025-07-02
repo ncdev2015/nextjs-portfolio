@@ -37,7 +37,7 @@ export default function NavBar() {
         {/* Menu for desktop */}
         <ul className="hidden sm:flex sm:space-x-8 text-sm font-semibold text-gray-100">
           <li>
-            <Link href="#home" className="hover:text-blue-400 transition-colors">Home</Link>
+            <Link href="" className="hover:text-blue-400 transition-colors">Home</Link>
           </li>
           <li>
             <Link href="#" className="hover:text-blue-400 transition-colors">Services</Link>
@@ -55,7 +55,7 @@ export default function NavBar() {
       {isOpen && (
         <ul className="flex flex-col space-y-4 px-6 pb-4 sm:hidden text-sm font-semibold text-gray-100">
           <li>
-            <Link href="#home" className="hover:text-blue-400 transition-colors">Home</Link>
+            <Link href="#" className="hover:text-blue-400 transition-colors">Home</Link>
           </li>
           <li>
             <Link href="#" className="hover:text-blue-400 transition-colors">Services</Link>
