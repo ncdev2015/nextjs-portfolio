@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { faker } from '@faker-js/faker'
 
 
-import NavBar from '@/app/components/NavBar'
+import NavBar from '@/app/components/layout/NavBar'
 import Hero from '@/app/components/Hero';
 import Services from '@/app/components/Services';
 import TechStack from '@/app/components/TechStack';
-import Contact from '@/app/components/Contact';
-import Footer from '@/app/components/Footer';
+import Contact from '@/app/components/contact/Contact';
+import Footer from '@/app/components/layout/Footer';
 
 import './Debug.css'
 
@@ -30,7 +30,7 @@ export default function HomePage() {
         <TechStack/>
         <Contact/>
       </main>
-      
+
       <Footer/>
     </> 
   );
