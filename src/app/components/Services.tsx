@@ -34,7 +34,7 @@ export default function Services() {
 
 		        {/* Back face */}
 		        <div className="flip-back bg-purple-800 text-gray-100 p-6 h-full overflow-hidden flex flex-col rounded-lg select-none">
-		          <h4 className="text-lg font-semibold mb-2">More Info</h4>
+		          <h4 className="text-lg font-semibold mb-2 select-none">More Info</h4>
 		          <p className="text-base overflow-auto">
 		            {i === 1
 		              ? "HTML, CSS, JS, React, Next.js, Tailwind..."

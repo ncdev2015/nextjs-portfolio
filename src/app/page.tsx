@@ -15,7 +15,9 @@ import TopClients from '@/app/components/TopClients';
 export default function HomePage() {    
   return (   
     <>
-      <NavBar/>
+      <header>
+        <NavBar/>
+      </header>
 
       <main className="px-4 py-12 max-w-4xl mx-auto text-gray-900">
         <Hero/>

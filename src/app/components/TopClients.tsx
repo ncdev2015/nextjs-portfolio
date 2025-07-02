@@ -1,42 +1,45 @@
 'use client'
 
 export default function Companies() {
-	return (
-		<section id="companies" className="py-12 px-4 max-w-4xl mx-auto">     
-	        <h2 className="text-2xl font-semibold mb-8 text-center">Top clients</h2>
+  const logos = [
+    { src: "/assets/icons/telefonica.png", alt: "Telefonica", className: "w-32" },
+    { src: "/assets/icons/indra.jpg", alt: "Indra", className: "w-40" },
+    { src: "/assets/icons/ba.png", alt: "BA", className: "w-32" },
+    { src: "/assets/icons/workana.png", alt: "Workana", className: "w-24" },
+    { src: "/assets/icons/freelancer.png", alt: "Freelancer", className: "w-40" },
+  ];
 
-	        <div className="flex flex-wrap justify-center items-center gap-8">
-	        	<img
-		            src="/assets/icons/telefonica.png"
-		            alt="Telefonica Logo"
-		            className="w-32 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
-		             sm:w-25"
-		          />                              
-		        <img
-		            src="/assets/icons/indra.jpg"
-		            alt="Logo Initech"
-		            className="w-40 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
-		             sm:w-35"
-		          />          
-				<img
-					src="/assets/icons/ba.png"
-					alt="Logo Globex Solutions"
-					className="w-32 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
-				 sm:w-23"
-				/>
-	        	<img
-		            src="/assets/icons/workana.jpeg"
-		            alt="Logo Initech"
-		            className="w-18 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
-		             sm:w-10"
-		          />
-		        <img
-		            src="/assets/icons/freelancer.png"
-		            alt="Logo Initech"
-		            className="w-40 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
-		             sm:w-30"
-		        />
-	        </div>
-	    </section>
-	);
+  return (
+    <section id="companies" className="py-12 px-4 max-w-4xl mx-auto">
+      <h2 className="text-2xl font-semibold mb-8 text-center">Top clients</h2>
+
+      <div className="overflow-hidden">
+        <div className="flex animate-scroll gap-8 w-max">
+          {[...logos, ...logos].map((logo, i) => (
+            <img
+              key={i}
+              src={logo.src}
+              alt={logo.alt}
+              className={`${logo.className} max-w-full object-contain grayscale hover:grayscale-0 transition duration-300`}
+            />
+          ))}
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-scroll {
+          animation: scroll 25s linear infinite;
+        }
+      `}</style>
+    </section>
+  );
 }
