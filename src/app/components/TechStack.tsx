@@ -1,8 +1,11 @@
 'use client';
 
+import { useState } from 'react';
+
 type TechItem = {
   name: string;
   icon?: React.ReactNode;
+  description: string;
 };
 
 type TechCategory = {
@@ -14,41 +17,44 @@ const techStack: TechCategory[] = [
   {
     category: 'Frontend',
     items: [
-      { name: 'React' },      
-      { name: 'Next.js' },
-      { name: 'TypeScript' },
-      { name: 'Flutter' },
+      { name: 'React', description: 'JavaScript library for building user interfaces.' },
+      { name: 'Next.js', description: 'Full-stack React framework for production-grade apps.' },
+      { name: 'TypeScript', description: 'Typed superset of JavaScript for safer code.' },
+      { name: 'Flutter', description: 'UI toolkit for building natively compiled apps with Dart.' },
     ],
   },
   {
     category: 'Backend',
     items: [
-      { name: 'Node.js' },
-      { name: 'Express' },
-      { name: 'Ruby on Rails' },
-      { name: 'Flask / FastAPI' },
+      { name: 'Node.js', description: 'JavaScript runtime built on Chrome\'s V8 engine.' },
+      { name: 'Express', description: 'Minimalist web framework for Node.js.' },
+      { name: 'Ruby on Rails', description: 'Opinionated web framework for fast backend development.' },
+      { name: 'Flask / FastAPI', description: 'Lightweight Python frameworks for APIs and web services.' },
     ],
   },
   {
     category: 'Databases',
     items: [
-      { name: 'PostgreSQL' },
-      { name: 'MongoDB' },
-      { name: 'Firebase' },
+      { name: 'MySQL', description: 'Popular open-source relational database known for speed and reliability.' },
+      { name: 'PostgreSQL', description: 'Powerful open-source relational database.' },      
+      { name: 'MongoDB', description: 'NoSQL database for flexible document storage.' },
+      { name: 'Firebase', description: 'Google\'s platform for real-time database and auth.' },
     ],
   },
   {
     category: 'DevOps / Others',
     items: [
-      { name: 'Docker' },
-      { name: 'CI/CD' },
-      { name: 'Cloud Platforms' },
-      { name: 'Vercel' },
+      { name: 'Docker', description: 'Container platform for consistent app deployment.' },
+      { name: 'CI/CD', description: 'Automated testing and deployment pipelines.' },
+      { name: 'Cloud Platforms', description: 'AWS, GCP, Azure: cloud infrastructure for apps.' },
+      { name: 'Vercel', description: 'Zero-config deployment platform for frontend apps.' },
     ],
   },
 ];
 
 export default function TechStack() {
+  const [openIndex, setOpenIndex] = useState<string | null>(null);
+
   return (
     <section id="tech-stack" className="py-12 px-4 max-w-4xl mx-auto">
       <h2 className="text-2xl font-bold mb-8 text-center">Main technologies</h2>
@@ -58,19 +64,31 @@ export default function TechStack() {
           <div key={group.category}>
             <h3 className="text-xl font-semibold mb-4 text-gray-700">{group.category}</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-              {group.items.map((tech) => (
-                <div
-                  key={tech.name}
-                  className="bg-white border rounded-lg shadow-sm p-4 text-center hover:shadow-md transition"
-                >
-                  {tech.icon && <div className="mb-2">{tech.icon}</div>}
-                  <p className="text-sm font-medium text-gray-800">{tech.name}</p>
-                </div>
-              ))}
+              {group.items.map((tech) => {
+                const id = `${group.category}-${tech.name}`;
+                return (
+                  <div key={tech.name} className="relative">
+                    <div
+                      className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 text-center hover:bg-purple-100 hover:border-purple-300 transition-colors duration-200 cursor-pointer"
+                      onClick={() => setOpenIndex(openIndex === id ? null : id)}
+                    >
+                      {tech.icon && <div className="mb-2">{tech.icon}</div>}
+                      <p className="text-sm font-medium text-gray-800">{tech.name}</p>
+                    </div>
+
+                    {openIndex === id && (
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-full bg-purple-800 border-gray-300 text-gray-100 p-4 rounded-lg shadow-lg border z-10">
+                        <p className="text-sm">{tech.description}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         ))}
       </div>
+
     </section>
   );
 }

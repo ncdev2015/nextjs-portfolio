@@ -16,7 +16,8 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 		  {[1, 2, 3].map((i) => (
 		    <div key={i} className="flip-card h-82">
-		      <div className="flip-inner border rounded-lg shadow bg-white w-full h-full relative">
+		      <div className="flip-inner border border-gray-200 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-full relative">
+
 		        
 		        {/* Front face */}
 		        <div className="flip-front p-6 h-full overflow-hidden flex flex-col">
@@ -29,7 +30,7 @@ export default function Services() {
 		        </div>
 
 		        {/* Back face */}
-		        <div className="flip-back bg-gray-100 p-6 h-full overflow-hidden flex flex-col rounded-lg">
+		        <div className="flip-back bg-purple-800 text-gray-100 p-6 h-full overflow-hidden flex flex-col rounded-lg">
 		          <h4 className="text-lg font-semibold mb-2">More Info</h4>
 		          <p className="text-base overflow-auto">
 		            {i === 1
@@ -44,6 +45,7 @@ export default function Services() {
 		    </div>
 		  ))}
 		</div>
+		
       </section>
 	);
 }

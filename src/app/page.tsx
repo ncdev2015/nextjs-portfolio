@@ -10,16 +10,11 @@ import Services from '@/app/components/Services';
 import TechStack from '@/app/components/TechStack';
 import Contact from '@/app/components/contact/Contact';
 import Footer from '@/app/components/layout/Footer';
+import ToolButtons from '@/app/components/ToolButtons';
 
 import './Debug.css'
 
-export default function HomePage() {  
-  faker.seed(10);
-
-  const firstName = faker.person.firstName();
-  const lastName = faker.person.lastName();
-  const title = faker.person.jobTitle();
-
+export default function HomePage() {    
   return (   
     <>
       <NavBar/>
