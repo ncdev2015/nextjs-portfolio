@@ -1,56 +1,25 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 
 export default function NavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className="bg-gray-700 shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Icon */}
-        <div className="text-2xl font-extrabold text-gray-900 select-none">
+        <div className="text-2xl font-extrabold text-gray-100 select-none">
           Nelson C.
         </div>
 
-        {/* Navigating */}
-        <ul className="hidden sm:flex space-x-8 text-sm font-semibold text-gray-700">
-          <li>
-            <Link
-              href="#home"
-              className="hover:text-blue-600 transition-colors duration-300 ease-in-out"
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#services"
-              className="hover:text-blue-600 transition-colors duration-300 ease-in-out"
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#works"
-              className="hover:text-blue-600 transition-colors duration-300 ease-in-out"
-            >
-              Works
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#contact"
-              className="hover:text-blue-600 transition-colors duration-300 ease-in-out"
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
-        
+        {/* Hamburguer menu button */}
         <button
           type="button"
-          className="sm:hidden text-gray-700 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded"
+          className="sm:hidden text-gray-100 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded"
           aria-label="Open nav menu"
+          onClick={() => setIsOpen(!isOpen)}
         >
           <svg
             className="w-6 h-6"
@@ -64,7 +33,41 @@ export default function NavBar() {
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
+
+        {/* Menu for desktop */}
+        <ul className="hidden sm:flex sm:space-x-8 text-sm font-semibold text-gray-100">
+          <li>
+            <Link href="#home" className="hover:text-blue-400 transition-colors">Home</Link>
+          </li>
+          <li>
+            <Link href="#" className="hover:text-blue-400 transition-colors">Services</Link>
+          </li>
+          <li>
+            <Link href="#" className="hover:text-blue-400 transition-colors">Works</Link>
+          </li>
+          <li>
+            <Link href="#" className="hover:text-blue-400 transition-colors">Contact</Link>
+          </li>
+        </ul>
       </div>
+
+      {/* Menu for mobile */}
+      {isOpen && (
+        <ul className="flex flex-col space-y-4 px-6 pb-4 sm:hidden text-sm font-semibold text-gray-100">
+          <li>
+            <Link href="#home" className="hover:text-blue-400 transition-colors">Home</Link>
+          </li>
+          <li>
+            <Link href="#" className="hover:text-blue-400 transition-colors">Services</Link>
+          </li>
+          <li>
+            <Link href="#" className="hover:text-blue-400 transition-colors">Works</Link>
+          </li>
+          <li>
+            <Link href="#" className="hover:text-blue-400 transition-colors">Contact</Link>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 }
