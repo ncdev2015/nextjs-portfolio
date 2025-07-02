@@ -10,9 +10,7 @@ import Services from '@/app/components/Services';
 import TechStack from '@/app/components/TechStack';
 import Contact from '@/app/components/contact/Contact';
 import Footer from '@/app/components/layout/Footer';
-import ToolButtons from '@/app/components/ToolButtons';
-
-import './Debug.css'
+import TopClients from '@/app/components/TopClients';
 
 export default function HomePage() {    
   return (   
@@ -23,6 +21,7 @@ export default function HomePage() {
         <Hero/>
         <Services/>
         <TechStack/>
+        <TopClients/>
         <Contact/>
       </main>
 

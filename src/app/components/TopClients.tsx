@@ -15,25 +15,25 @@ export default function Companies() {
 		        <img
 		            src="/assets/icons/indra.jpg"
 		            alt="Logo Initech"
-		            className="w-32 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
+		            className="w-40 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
 		             sm:w-35"
 		          />          
 				<img
 					src="/assets/icons/ba.png"
 					alt="Logo Globex Solutions"
 					className="w-32 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
-				 sm:w-20"
+				 sm:w-23"
 				/>
 	        	<img
 		            src="/assets/icons/workana.jpeg"
 		            alt="Logo Initech"
-		            className="w-32 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
+		            className="w-18 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
 		             sm:w-10"
 		          />
 		        <img
 		            src="/assets/icons/freelancer.png"
 		            alt="Logo Initech"
-		            className="w-32 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
+		            className="w-40 max-w-full object-contain grayscale hover:grayscale-0 transition duration-300
 		             sm:w-30"
 		        />
 	        </div>

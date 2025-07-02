@@ -1,6 +1,6 @@
 'use client';
 
-import { faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker';
 
 export default function Services() {
 	faker.seed(10);
@@ -15,7 +15,10 @@ export default function Services() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 		  {[1, 2, 3].map((i) => (
-		    <div key={i} className="flip-card h-82">
+		    <div
+		    	key={i}
+		    	className="flip-card h-82"
+		    >
 		      <div className="flip-inner border border-gray-200 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-full relative">
 
 		        
@@ -46,6 +49,6 @@ export default function Services() {
 		  ))}
 		</div>
 
-      </section>
+      	</section>
 	);
 }
