@@ -16,10 +16,10 @@ type TechCategory = {
 const techStack: TechCategory[] = [
   {
     category: 'Frontend',
-    items: [
+    items: [      
       { name: 'React', description: 'JavaScript library for building user interfaces.' },
-      { name: 'Next.js', description: 'Full-stack React framework for production-grade apps.' },
       { name: 'TypeScript', description: 'Typed superset of JavaScript for safer code.' },
+      { name: 'Next.js', description: 'Full-stack React framework for production-grade apps.' },            
       { name: 'Flutter', description: 'UI toolkit for building natively compiled apps with Dart.' },
     ],
   },
@@ -47,9 +47,17 @@ const techStack: TechCategory[] = [
       { name: 'Docker', description: 'Container platform for consistent app deployment.' },
       { name: 'CI/CD', description: 'Automated testing and deployment pipelines.' },
       { name: 'Cloud Platforms', description: 'AWS, GCP, Azure: cloud infrastructure for apps.' },
-      { name: 'Vercel', description: 'Zero-config deployment platform for frontend apps.' },
     ],
-  },
+  }, 
+  {
+    category: 'AI / Machine Learning',
+    items: [
+      { name: 'TensorFlow', description: 'Open-source library for machine learning and deep learning.' },
+      { name: 'scikit-learn', description: 'Machine learning library for classical algorithms in Python.' },
+      { name: 'OpenAI API', description: 'Integration of GPT models for text generation, chatbots, and assistants.' },
+      { name: 'Mathematics', description: 'Linear algebra, probability, statistics, and optimization concepts fundamental to ML algorithms.' }
+    ],
+  }
 ];
 
 export default function TechStack() {
