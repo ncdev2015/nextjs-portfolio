@@ -19,12 +19,11 @@ export default function Services() {
 		    	key={i}
 		    	className="flip-card h-82"
 		    >
-		      <div className="flip-inner border border-gray-200 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-full relative">
-
+		     	<div className="flip-inner border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-200 shadow-sm hover:shadow-md transition-all duration-300 w-full h-full relative">
 		        
 		        {/* Front face */}
-		        <div className="flip-front p-6 h-full overflow-hidden flex flex-col select-none">
-		          <h3 className="text-xl font-semibold mb-2">
+		        <div className="flip-front p-6 h-full overflow-hidden flex flex-col select-none text-gray-800">
+		          <h3 className="text-xl font-semibold mb-2 text-blue-700">
 		            {i === 1 ? "Web Development" : i === 2 ? "Mobile Development" : "IT Training"}
 		          </h3>
 		          <p className="text-base overflow-auto">
@@ -33,8 +32,8 @@ export default function Services() {
 		        </div>
 
 		        {/* Back face */}
-		        <div className="flip-back bg-purple-800 text-gray-100 p-6 h-full overflow-hidden flex flex-col rounded-lg select-none">
-		          <h4 className="text-lg font-semibold mb-2 select-none">More Info</h4>
+		        <div className="flip-back bg-gray-800 text-gray-100 p-6 h-full overflow-hidden flex flex-col rounded-lg select-none">
+		          <h4 className="text-lg text-blue-500 font-semibold mb-2 select-none">More Info</h4>
 		          <p className="text-base overflow-auto">
 		            {i === 1
 		              ? "HTML, CSS, JS, React, Next.js, Tailwind..."

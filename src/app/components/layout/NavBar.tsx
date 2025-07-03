@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,21 +18,36 @@ export default function NavBar() {
         {/* Hamburguer menu button */}
         <button
           type="button"
-          className="sm:hidden text-gray-100 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded"
+          className="sm:hidden text-gray-100 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded p-1"
           aria-label="Open nav menu"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            viewBox="0 0 24 24"
+          <motion.div
+            animate={isOpen ? 'open' : 'closed'}
+            variants={{
+              open: { rotate: 90 },
+              closed: { rotate: 0 }
+            }}
+            transition={{ duration: 0.3 }}
           >
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <motion.path
+                variants={{
+                  closed: { d: "M4 6h16M4 12h16M4 18h16" },
+                  open: { d: "M6 18L18 6M6 6l12 12" }
+                }}
+                transition={{ duration: 0.3 }}
+              />
+            </svg>
+          </motion.div>
         </button>
 
         {/* Menu for desktop */}
@@ -52,22 +68,50 @@ export default function NavBar() {
       </div>
 
       {/* Menu for mobile */}
-      {isOpen && (
-        <ul className="flex flex-col space-y-4 px-6 pb-4 sm:hidden text-sm font-semibold text-gray-100">
-          <li>
-            <Link href="#" className="hover:text-blue-400 transition-colors">Home</Link>
-          </li>
-          <li>
-            <Link href="#" className="hover:text-blue-400 transition-colors">Services</Link>
-          </li>
-          <li>
-            <Link href="#" className="hover:text-blue-400 transition-colors">Works</Link>
-          </li>
-          <li>
-            <Link href="#" className="hover:text-blue-400 transition-colors">Contact</Link>
-          </li>
-        </ul>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.ul 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            className="overflow-hidden sm:hidden text-sm font-semibold text-gray-100"
+          >
+            <motion.li 
+              initial={{ x: 20 }}
+              animate={{ x: 0 }}
+              transition={{ delay: 0.1 }}
+              className="px-6 py-2 hover:bg-gray-600"
+            >
+              <Link href="#" className="hover:text-blue-400 transition-colors block">Home</Link>
+            </motion.li>
+            <motion.li 
+              initial={{ x: 20 }}
+              animate={{ x: 0 }}
+              transition={{ delay: 0.12 }}
+              className="px-6 py-2 hover:bg-gray-600"
+            >
+              <Link href="#" className="hover:text-blue-400 transition-colors block">Services</Link>
+            </motion.li>
+            <motion.li 
+              initial={{ x: 20 }}
+              animate={{ x: 0 }}
+              transition={{ delay: 0.14 }}
+              className="px-6 py-2 hover:bg-gray-600"
+            >
+              <Link href="#" className="hover:text-blue-400 transition-colors block">Works</Link>
+            </motion.li>
+            <motion.li 
+              initial={{ x: 20 }}
+              animate={{ x: 0 }}
+              transition={{ delay: 0.16 }}
+              className="px-6 py-2 hover:bg-gray-600"
+            >
+              <Link href="#" className="hover:text-blue-400 transition-colors block">Contact</Link>
+            </motion.li>
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

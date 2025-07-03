@@ -6,41 +6,41 @@ export default function Contact() {
 		    <h2 className="text-2xl font-semibold mb-6 text-center">Contact form</h2>
 		    <form className="space-y-4">
 			<div>
-			<label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+			<label htmlFor="name" className="block text-sm font-medium text-gray-100">Name</label>
 			<input
 			  type="text"
 			  id="name"
 			  name="name"
-			  className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
+			  className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-black"
 			  required
 			/>
 			</div>
 
 			<div>
-			<label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+			<label htmlFor="email" className="block text-sm font-medium text-gray-100">Email</label>
 			<input
 			  type="email"
 			  id="email"
 			  name="email"
-			  className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
+			  className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-black"
 			  required
 			/>
 			</div>
 
 			<div>
-			<label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+			<label htmlFor="message" className="block text-sm font-medium text-gray-100">Message</label>
 			<textarea
 			  id="message"
 			  name="message"
 			  rows={4}
-			  className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
+			  className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-100 text-black"
 			  required
 			/>
 			</div>
 
 		      <button
 				  type="submit"
-				  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors"
+				  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
 				>
 				  Send message
 				</button>

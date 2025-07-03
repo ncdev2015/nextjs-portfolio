@@ -62,14 +62,14 @@ export default function TechStack() {
       <div className="space-y-10">
         {techStack.map((group) => (
           <div key={group.category}>
-            <h3 className="text-xl font-semibold mb-4 text-gray-700">{group.category}</h3>
+            <h3 className="text-xl font-semibold mb-4 text-gray-200">{group.category}</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {group.items.map((tech) => {
                 const id = `${group.category}-${tech.name}`;
                 return (
                   <div key={tech.name} className="relative">
                     <div
-                      className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 text-center hover:bg-purple-100 hover:border-purple-300 transition-colors duration-200 cursor-pointer select-none"
+                      className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 text-center hover:bg-blue-100 hover:border-gray-300 transition-colors duration-200 cursor-pointer select-none"
                       onClick={() => setOpenIndex(openIndex === id ? null : id)}
                     >
                       {tech.icon && <div className="mb-2">{tech.icon}</div>}
@@ -77,7 +77,7 @@ export default function TechStack() {
                     </div>
 
                     {openIndex === id && (
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-full bg-purple-800 border-gray-300 text-gray-100 p-4 rounded-lg shadow-lg border z-10 select-none">
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-full bg-gray-800 border-gray-300 text-gray-100 p-4 rounded-lg shadow-lg border z-10 select-none">
                         <p className="text-sm">{tech.description}</p>
                       </div>
                     )}
