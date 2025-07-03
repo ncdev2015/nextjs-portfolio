@@ -20,7 +20,7 @@ export default function Companies() {
               key={i}
               src={logo.src}
               alt={logo.alt}
-              className={`${logo.className} max-w-full object-contain grayscale hover:grayscale-0 transition duration-300`}
+              className={`${logo.className} max-w-full object-contain grayscale hover:grayscale-0 transition duration-300 select-none`}
             />
           ))}
         </div>

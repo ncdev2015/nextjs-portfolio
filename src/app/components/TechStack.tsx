@@ -77,7 +77,7 @@ export default function TechStack() {
                     </div>
 
                     {openIndex === id && (
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-full bg-purple-800 border-gray-300 text-gray-100 p-4 rounded-lg shadow-lg border z-10">
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-full bg-purple-800 border-gray-300 text-gray-100 p-4 rounded-lg shadow-lg border z-10 select-none">
                         <p className="text-sm">{tech.description}</p>
                       </div>
                     )}
