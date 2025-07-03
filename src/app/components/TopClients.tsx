@@ -11,7 +11,7 @@ export default function Companies() {
 
   return (
     <section id="companies" className="py-12 px-4 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-semibold mb-8 text-center select-none">Top clients</h2>
+      <h2 className="text-3xl font-semibold mb-8 text-center select-none">Top clients</h2>
 
       <div className="overflow-hidden">
         <div className="flex animate-scroll gap-8 w-max">

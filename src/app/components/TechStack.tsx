@@ -57,7 +57,7 @@ export default function TechStack() {
 
   return (
     <section id="tech-stack" className="py-12 px-4 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-8 text-center">Main technologies</h2>
+      <h2 className="text-3xl font-bold mb-8 text-center">Main technologies</h2>
 
       <div className="space-y-10">
         {techStack.map((group) => (
