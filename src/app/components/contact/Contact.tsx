@@ -68,12 +68,6 @@ export default function Contact() {
 					/>
 				</div>
 
-				<ReCAPTCHA
-		          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-		          size="invisible"
-		          ref={recaptchaRef}
-		        />
-
 		      	<button
 				  type="submit"
 				  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
