@@ -8,7 +8,7 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-700 shadow-md sticky top-0 z-50">
+    <nav className="bg-gray-800 shadow-md sticky top-0 z-50">      
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Icon */}
         <div className="text-2xl font-extrabold text-gray-100 select-none">
@@ -53,7 +53,9 @@ export default function NavBar() {
         {/* Menu for desktop */}
         <ul className="hidden sm:flex sm:space-x-8 text-sm font-semibold text-gray-100">
           <li>
-            <Link href="" className="hover:text-blue-400 transition-colors">Home</Link>
+            <Link href="#" className="hover:text-blue-400 transition-colors">
+              Home
+            </Link>
           </li>
           <li>
             <Link href="#" className="hover:text-blue-400 transition-colors">Services</Link>
