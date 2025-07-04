@@ -14,10 +14,6 @@ export async function POST(req: Request) {
 
   const data = await response.json();
 
-  if (!data.success) {
-    return new Response(JSON.stringify({ message: 'Captcha validation failed' }), { status: 400 });
-  }
-
   // reCAPTCHA v3-specific: check score
   if (data.score < 0.5 || data.action !== 'contact') {
     return new Response(JSON.stringify({ message: 'Captcha score too low.' }), { status: 403 });

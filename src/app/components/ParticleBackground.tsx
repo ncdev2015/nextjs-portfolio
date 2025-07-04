@@ -27,7 +27,7 @@ export default function ParticleBackground() {
 
     // Particles configuration
     const particles: Particle[] = [];
-    const particleCount = 150;
+    const particleCount = 100;
 
     // Initialize particles
     for (let i = 0; i < particleCount; i++) {
