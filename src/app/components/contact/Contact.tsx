@@ -1,21 +1,21 @@
 'use client'
 
 import { useRef, useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
 
-export default function Contact() {
-	const recaptchaRef = useRef<ReCAPTCHA>(null);
-		const [status, setStatus] = useState('');
+export default function Contact() {	
+	const [status, setStatus] = useState('');
 
-		const handleSubmit = async (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
 		const form = e.target as HTMLFormElement;
 		const formData = new FormData(form);
 
-		// Execute invisible captcha and get token
-		const token = await recaptchaRef.current?.executeAsync();
-		recaptchaRef.current?.reset();
+		// Execute reCAPTCHA v3
+		const token = await grecaptcha.execute(
+			process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
+			{ action: 'contact' }
+		);
 
 		const res = await fetch('/api/contact', {
 		  method: 'POST',
@@ -28,8 +28,8 @@ export default function Contact() {
 		});
 
 		const data = await res.json();
-			setStatus(data.message);
-		};
+		setStatus(data.message);
+	};
 
 	return (
 		<section id="contact" className="py-4 px-4 max-w-2xl mx-auto">
