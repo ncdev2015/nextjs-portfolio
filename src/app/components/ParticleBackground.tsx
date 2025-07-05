@@ -28,7 +28,7 @@ export default function ParticleBackground() {
     async function initParticles() {
       // Particles configuration
       const particles: Particle[] = [];
-      const particleCount = 100;
+      const particleCount = 120;
 
       // Initialize particles
       for (let i = 0; i < particleCount; i++) {
@@ -53,7 +53,8 @@ export default function ParticleBackground() {
           angle,
           vx: Math.cos(angle) * finalSpeed,
           vy: Math.sin(angle) * finalSpeed,
-        });
+          canCollide: Math.random() < 0.5, // 50% chance to colide
+        } as Particle & { canCollide: boolean });
       }
 
       // Animation function
@@ -64,6 +65,52 @@ export default function ParticleBackground() {
         // Transparent background (optional trail effect)
         ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Detect and resolve collisions
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const p1 = particles[i] as Particle & { canCollide: boolean };
+            const p2 = particles[j] as Particle & { canCollide: boolean };
+
+            const dx = p2.x - p1.x;
+            const dy = p2.y - p1.y;
+            const dist = Math.hypot(dx, dy);
+            const minDist = p1.size + p2.size;
+
+            if (dist < minDist) {
+              if (!p1.canCollide && !p2.canCollide) continue;
+
+              // Simple elastic collision in 2D (only swapping velocity)
+              const angle = Math.atan2(dy, dx);
+              const sin = Math.sin(angle);
+              const cos = Math.cos(angle);
+
+              // Rotate velocities to collision axis
+              const v1 = { x: p1.vx * cos + p1.vy * sin, y: -p1.vx * sin + p1.vy * cos };
+              const v2 = { x: p2.vx * cos + p2.vy * sin, y: -p2.vx * sin + p2.vy * cos };
+
+              // Swap x velocities (elastic collision on 1D axis)
+              const temp = v1.x;
+              v1.x = v2.x;
+              v2.x = temp;
+
+              // Rotate velocities back
+              p1.vx = v1.x * cos - v1.y * sin;
+              p1.vy = v1.x * sin + v1.y * cos;
+              p2.vx = v2.x * cos - v2.y * sin;
+              p2.vy = v2.x * sin + v2.y * cos;
+
+              // Optional: Separate particles to avoid overlap sticking
+              const overlap = (minDist - dist) / 2;
+              const offsetX = overlap * Math.cos(angle);
+              const offsetY = overlap * Math.sin(angle);
+              p1.x -= offsetX;
+              p1.y -= offsetY;
+              p2.x += offsetX;
+              p2.y += offsetY;
+            }
+          }
+        }
 
         // Draw particles
         particles.forEach((p) => {
