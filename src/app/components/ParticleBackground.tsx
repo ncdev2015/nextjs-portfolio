@@ -28,7 +28,7 @@ export default function ParticleBackground() {
     async function initParticles() {
       // Particles configuration
       const particles: Particle[] = [];
-      const particleCount = 120;
+      const particleCount = 100;
 
       // Initialize particles
       for (let i = 0; i < particleCount; i++) {
@@ -67,8 +67,8 @@ export default function ParticleBackground() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Detect and resolve collisions
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
+        for (let i = 0; i < particleCount; i++) {
+          for (let j = i + 1; j < particleCount; j++) {
             const p1 = particles[i] as Particle & { canCollide: boolean };
             const p2 = particles[j] as Particle & { canCollide: boolean };
 

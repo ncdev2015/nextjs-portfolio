@@ -10,12 +10,12 @@ import TechStack from '@/app/components/TechStack';
 import Contact from '@/app/components/contact/Contact';
 import Footer from '@/app/components/layout/Footer';
 import TopClients from '@/app/components/TopClients';
-import ParticleBackground from '@/app/components/ParticleBackground';
+import StarSpace from '@/app/components/StarSpace';
 
 export default function HomePage() {    
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100"> {/* Dark background + light text */}
-      <ParticleBackground />
+    <section className="pt-16 min-h-screen bg-gray-900 text-gray-100"> {/* Dark background + light text */}
+      <StarSpace />
       
       {/* Content with higher z-index */}
       <div className="relative z-10"> 
@@ -33,6 +33,6 @@ export default function HomePage() {
         
         <Footer />
       </div>
-    </div>
+    </section>
   );
 }
