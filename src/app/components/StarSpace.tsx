@@ -4,17 +4,20 @@ import * as THREE from "three";
 export default function ParticleBackground() {
   const mountRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<number | undefined>(undefined);
-  const sceneRef = useRef<{
-    scene: THREE.Scene;
-    camera: THREE.PerspectiveCamera;
-    renderer: THREE.WebGLRenderer;
-    particleSystem: THREE.Points;
-    material: THREE.ShaderMaterial;
-    geometry: THREE.BufferGeometry;
-    velocities: Float32Array;
-    clock: THREE.Clock;
-    particleCount: number;
-  } | undefined>(undefined);
+  const sceneRef = useRef<
+    | {
+        scene: THREE.Scene;
+        camera: THREE.PerspectiveCamera;
+        renderer: THREE.WebGLRenderer;
+        particleSystem: THREE.Points;
+        material: THREE.ShaderMaterial;
+        geometry: THREE.BufferGeometry;
+        velocities: Float32Array;
+        clock: THREE.Clock;
+        particleCount: number;
+      }
+    | undefined
+  >(undefined);
 
   const handleResize = useCallback(() => {
     if (!sceneRef.current) return;
@@ -47,7 +50,7 @@ export default function ParticleBackground() {
     const renderer = new THREE.WebGLRenderer({
       antialias: false, // Disabled for better performance
       alpha: true,
-      powerPreference: "high-performance"
+      powerPreference: "high-performance",
     });
 
     // Optimized renderer configuration
@@ -93,7 +96,7 @@ export default function ParticleBackground() {
       velocities[i * 3 + 2] = (Math.random() - 0.5) * speed * 0.5;
 
       // Pre-calculated sizes
-      sizes[i] = Math.random() * 0.5 + 0.5
+      sizes[i] = Math.random() * 0.5 + 0.5;
 
       // Pre-calculated colors
       const brightness = 0.7 + Math.random() * 0.3;
@@ -104,15 +107,17 @@ export default function ParticleBackground() {
 
     // Optimized geometry
     const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
+    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     // Optimized shader
     const material = new THREE.ShaderMaterial({
       uniforms: {
         time: { value: 0 },
-        viewport: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) }
+        viewport: {
+          value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+        },
       },
       vertexShader: `
         attribute float size;
@@ -155,7 +160,7 @@ export default function ParticleBackground() {
       transparent: true,
       blending: THREE.AdditiveBlending,
       depthTest: false,
-      depthWrite: false
+      depthWrite: false,
     });
 
     const particleSystem = new THREE.Points(geometry, material);
@@ -175,7 +180,7 @@ export default function ParticleBackground() {
       geometry,
       velocities,
       clock,
-      particleCount
+      particleCount,
     };
 
     // Variables for throttling
@@ -205,10 +210,11 @@ export default function ParticleBackground() {
         positions[i3 + 2] += velocities[i3 + 2];
 
         // More efficient particle recycling
-        if (Math.abs(positions[i3]) > bounds || 
-            Math.abs(positions[i3 + 1]) > bounds || 
-            Math.abs(positions[i3 + 2]) > bounds) {
-
+        if (
+          Math.abs(positions[i3]) > bounds ||
+          Math.abs(positions[i3 + 1]) > bounds ||
+          Math.abs(positions[i3 + 2]) > bounds
+        ) {
           // Reposition from opposite side
           const scale = bounds * 0.8;
           positions[i3] = (Math.random() - 0.5) * scale;
@@ -228,7 +234,7 @@ export default function ParticleBackground() {
     animate(0);
 
     // Event listeners
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Cleanup
     return () => {
@@ -261,7 +267,7 @@ export default function ParticleBackground() {
         width: "100%",
         height: "100%",
         zIndex: 0,
-        pointerEvents: "none"
+        pointerEvents: "none",
       }}
     />
   );
