@@ -32,6 +32,9 @@ export default function ParticleBackground() {
   useEffect(() => {
     if (!mountRef.current) return;
 
+    // Store the mount node for cleanup
+    const mountNode = mountRef.current;
+
     // Optimized initial setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -232,11 +235,11 @@ export default function ParticleBackground() {
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
       }
-
-      window.removeEventListener('resize', handleResize);
-
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (mountNode && renderer.domElement) {
+        mountNode.removeChild(renderer.domElement);
+      }
+      if (mountNode && renderer.domElement) {
+        mountNode.removeChild(renderer.domElement);
       }
 
       // Free memory
