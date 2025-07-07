@@ -8,7 +8,7 @@ export default function Hero() {
 		<section className="mb-12">
 
 		  <header id="home" className="mb-12 text-center">
-	    	<h1 className="text-5xl font-bold">Nelson C.</h1>
+	    	<h1 className="text-4xl font-bold">Nelson C.</h1>
 	    	<h2 className="text-2xl text-gray-200 mt-2">Software Engineer & IT Instructor </h2>
 	    </header>
 
