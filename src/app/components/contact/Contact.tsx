@@ -33,7 +33,7 @@ export default function Contact() {
 
 	return (
 		<section id="contact" className="py-4 px-4 max-w-2xl mx-auto">
-			<h2 className="text-3xl font-semibold mb-6 text-center">Contact form</h2>
+			<h2 className="text-3xl font-semibold mb-6 text-center">Contact</h2>
 	    	<form className="space-y-4" onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor="name" className="block text-sm font-medium text-gray-100">Name</label>

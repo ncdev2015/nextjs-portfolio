@@ -50,13 +50,13 @@ const techStack: TechCategory[] = [
     ],
   }, 
   {
-    category: 'AI / Machine Learning',
+  category: 'AI / Machine Learning',
     items: [
       { name: 'TensorFlow', description: 'Open-source library for machine learning and deep learning.' },
       { name: 'scikit-learn', description: 'Machine learning library for classical algorithms in Python.' },
       { name: 'OpenAI API', description: 'Integration of GPT models for text generation, chatbots, and assistants.' },
-      { name: 'Mathematics', description: 'Linear algebra, probability, statistics, and optimization concepts fundamental to ML algorithms.' }
-    ],
+      { name: 'AI Agents', description: 'Design and implementation of autonomous agents capable of perceiving, reasoning, and acting in dynamic environments.' }
+    ]
   }
 ];
 
@@ -64,7 +64,7 @@ export default function TechStack() {
   const [openIndex, setOpenIndex] = useState<string | null>(null);
 
   return (
-    <section id="tech-stack" className="py-12 px-4 max-w-4xl mx-auto">
+    <section id="technologies" className="py-12 px-4 max-w-4xl mx-auto">
       <h2 className="text-3xl font-bold mb-8 text-center">Main technologies</h2>
 
       <div className="space-y-10">
