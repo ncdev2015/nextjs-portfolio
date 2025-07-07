@@ -1,12 +1,14 @@
 'use client'
 
+import Image from 'next/image';
+
 export default function Companies() {
   const logos = [
-    { src: "/assets/icons/workana.png", alt: "Workana", className: "w-34" },
-    { src: "/assets/icons/telefonica.png", alt: "Telefonica", className: "w-34" },
-    { src: "/assets/icons/indra.jpg", alt: "Indra", className: "w-34" },
-    { src: "/assets/icons/ba.png", alt: "BA", className: "w-32" },
-    { src: "/assets/icons/freelancer.png", alt: "Freelancer", className: "w-35" },
+    { src: "/assets/icons/workana.png", alt: "Workana", className: "w-34", width: 136, height: 40 },
+    { src: "/assets/icons/telefonica.png", alt: "Telefonica", className: "w-34", width: 136, height: 40 },
+    { src: "/assets/icons/indra.jpg", alt: "Indra", className: "w-34", width: 136, height: 40 },
+    { src: "/assets/icons/ba.png", alt: "BA", className: "w-32", width: 128, height: 40 },
+    { src: "/assets/icons/freelancer.png", alt: "Freelancer", className: "w-35", width: 140, height: 40 },
   ];
 
   return (
@@ -16,11 +18,14 @@ export default function Companies() {
       <div className="overflow-hidden">
         <div className="flex animate-scroll gap-8 w-max">
           {[...logos, ...logos].map((logo, i) => (
-            <img
+            <Image
               key={i}
               src={logo.src}
               alt={logo.alt}
+              width={logo.width}
+              height={logo.height}
               className={`${logo.className} max-w-full object-contain grayscale hover:grayscale-0 transition duration-300 select-none`}
+              unoptimized
             />
           ))}
         </div>
