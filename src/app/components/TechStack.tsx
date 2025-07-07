@@ -16,10 +16,10 @@ type TechCategory = {
 const techStack: TechCategory[] = [
   {
     category: 'Frontend',
-    items: [      
+    items: [
       { name: 'React', description: 'JavaScript library for building user interfaces.' },
       { name: 'TypeScript', description: 'Typed superset of JavaScript for safer code.' },
-      { name: 'Next.js', description: 'Full-stack React framework for production-grade apps.' },            
+      { name: 'Next.js', description: 'Full-stack React framework for production-grade apps.' },
       { name: 'Flutter', description: 'UI toolkit for building natively compiled apps with Dart.' },
     ],
   },

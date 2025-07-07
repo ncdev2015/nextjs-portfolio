@@ -5,7 +5,7 @@ export default function Companies() {
     { src: "/assets/icons/workana.png", alt: "Workana", className: "w-34" },
     { src: "/assets/icons/telefonica.png", alt: "Telefonica", className: "w-34" },
     { src: "/assets/icons/indra.jpg", alt: "Indra", className: "w-34" },
-    { src: "/assets/icons/ba.png", alt: "BA", className: "w-32" },    
+    { src: "/assets/icons/ba.png", alt: "BA", className: "w-32" },
     { src: "/assets/icons/freelancer.png", alt: "Freelancer", className: "w-35" },
   ];
 

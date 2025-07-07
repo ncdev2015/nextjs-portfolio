@@ -6,7 +6,7 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   // Smooth scroll handler for links
-  const handleSmoothScroll = (e, target) => {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, target: string) => {
     // If target is empty or '#', scroll to top
     if (target === '#' || target === '') {
       e.preventDefault();

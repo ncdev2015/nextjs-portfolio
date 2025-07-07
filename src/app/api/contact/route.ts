@@ -2,7 +2,7 @@ export async function POST(req: Request) {
   const { name, email, message, captcha } = await req.json();
 
   const secret = process.env.RECAPTCHA_SECRET;
-  
+
   const response = await fetch(
     `https://www.google.com/recaptcha/api/siteverify`,
     {

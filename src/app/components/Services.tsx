@@ -5,22 +5,19 @@ import { faker } from '@faker-js/faker';
 export default function Services() {
 	faker.seed(10);
 
-	// Descripcion del Servicio de Desarrollo Web
 	const desc1 = "I build fast and scalable websites and web apps using technologies like Next.js, Tailwind CSS, and REST APIs. I work across both frontend and backend, focusing on performance and user experience.";
 	const moreInfo1 = "HTML, CSS, JavaScript, React, Next.js, Tailwind CSS, Node.js, Express, REST APIs, Vercel, SEO best practices, responsive design.";
 
-	// Descripcion del Servicio de Desarrollo Mobile
   	const desc2 = "I develop cross-platform mobile apps with React Native or Flutter, ensuring smooth performance and intuitive design for both Android and iOS.";
   	const moreInfo2 = "React Native, Flutter, Expo, Firebase, push notifications, native modules, performance optimization, Play Store and App Store publishing.";
 
-  	// Descripcion del Servicio de Capacitación en IT
   	const desc3 = "I offer customized training in programming and IT for individuals and teams. I have experience teaching C++, web development, data structures, and modern JavaScript tools.";
   	const moreInfo3 = "C/C++, JavaScript, Python, Java, Elixir, web development, algorithms and data structures, software engineering fundamentals, 1:1 coaching, group workshops, bootcamp-style training.";
 
 	return (
 		<section id="services" className="py-10 px-4">
         <h2 className="text-3xl font-bold mb-8 text-center">Main services</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 		  {[1, 2, 3].map((i) => (
 		    <div
@@ -49,7 +46,7 @@ export default function Services() {
 		              	? moreInfo2
 		              	: moreInfo3}
 		          	</p>
-		        </div>		        
+		        </div>
 		      </div>
 		    </div>
 		  ))}

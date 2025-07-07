@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
-export default function Contact() {	
+export default function Contact() {
 	const [status, setStatus] = useState('');
 
 	const handleSubmit = async (e: React.FormEvent) => {
@@ -12,7 +12,14 @@ export default function Contact() {
 		const formData = new FormData(form);
 
 		// Execute reCAPTCHA v3
-		const token = await grecaptcha.execute(
+		// Define grecaptcha type on window
+		interface Grecaptcha {
+			execute(siteKey: string, options: { action: string }): Promise<string>;
+		}
+		interface WindowWithGrecaptcha extends Window {
+			grecaptcha: Grecaptcha;
+		}
+		const token = await ((window as unknown) as WindowWithGrecaptcha).grecaptcha.execute(
 			process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
 			{ action: 'contact' }
 		);
