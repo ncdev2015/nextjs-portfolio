@@ -67,7 +67,9 @@ export default function ParticleBackground() {
     mountRef.current.appendChild(renderer.domElement);
 
     // Reduce particles for better performance
-    const particleCount = window.innerWidth < 768 ? 1500 : 2000;
+    alert(window.innerWidth);
+
+    const particleCount = window.innerHeight < 800 ? 500 : 1000;
     const positions = new Float32Array(particleCount * 3);
     const sizes = new Float32Array(particleCount);
     const velocities = new Float32Array(particleCount * 3);
