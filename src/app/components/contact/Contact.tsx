@@ -40,7 +40,7 @@ export default function Contact() {
       return;
     }
 
-    const res = await fetch("/api/contact", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
