@@ -22,7 +22,17 @@ export default function Contact() {
     const formData = new FormData(form);
 
     // Get token from reCAPTCHA v2 checkbox
-    const token = (window as any).grecaptcha.getResponse();
+    // Define grecaptcha type on window
+    interface Grecaptcha {
+      getResponse: () => string;
+      reset: () => void;
+    }
+    interface WindowWithGrecaptcha extends Window {
+      grecaptcha: Grecaptcha;
+    }
+    const token = (
+      window as unknown as WindowWithGrecaptcha
+    ).grecaptcha.getResponse();
 
     if (!token) {
       setStatusType("error");
@@ -54,7 +64,9 @@ export default function Contact() {
       setStatusType("success");
       setStatus("Message sent successfully!");
       form.reset();
-      (window as any).grecaptcha.reset();
+      (
+        window as unknown as Window & { grecaptcha: { reset: () => void } }
+      ).grecaptcha.reset();
     } else {
       setStatusType("error");
       setStatus("Failed to send the message. Please try again.");
