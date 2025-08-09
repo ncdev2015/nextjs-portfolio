@@ -1,26 +1,33 @@
 export async function POST(req: Request) {
   const { name, email, message, captcha } = await req.json();
 
-  const secret = process.env.RECAPTCHA_SECRET;
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
 
+  // Verify captcha with Google
   const response = await fetch(
-    `https://www.google.com/recaptcha/api/siteverify`,
+    'https://www.google.com/recaptcha/api/siteverify',
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `secret=${secret}&response=${captcha}`,
+      body: `secret=${encodeURIComponent(secret!)}&response=${encodeURIComponent(captcha)}`,
     }
   );
 
   const data = await response.json();
 
-  // reCAPTCHA v3-specific: check score
-  if (data.score < 0.5 || data.action !== 'contact') {
-    return new Response(JSON.stringify({ message: 'Captcha score too low.' }), { status: 403 });
+  // reCAPTCHA v2 check
+  if (!data.success) {
+    return new Response(
+      JSON.stringify({ message: 'Captcha verification failed.' }),
+      { status: 403 }
+    );
   }
 
-  // Handle your form submission here (e.g. send email, save to DB)
-  console.log({ name, email, message });
+  // Handle your form submission here
+  console.log('Form submission:', { name, email, message });
 
-  return new Response(JSON.stringify({ message: 'Message sent successfully!' }), { status: 200 });
+  return new Response(
+    JSON.stringify({ message: 'Message sent successfully!' }),
+    { status: 200 }
+  );
 }
