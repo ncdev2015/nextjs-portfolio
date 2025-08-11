@@ -1,8 +1,8 @@
 # Next.js Portfolio
 
-![Next.js](https://img.shields.io/badge/Next.js-13+-black?logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-15+-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6?logo=typescript)
-![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)
+![React](https://img.shields.io/badge/React-19+-61DAFB?logo=react)
 
 A modern portfolio built with Next.js and TypeScript to showcase my startup-focused projects. Designed for performance, scalability, and developer experience.
 
