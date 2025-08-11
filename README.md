@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Portfolio
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-13+-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6?logo=typescript)
+![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)
 
-First, run the development server:
+A modern portfolio built with Next.js and TypeScript to showcase my startup-focused projects. Designed for performance, scalability, and developer experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Responsive and accessible design
+- Fast page loads with Next.js optimizations
+- Type-safe code with TypeScript
+- Easy to maintain and scale
+- Project showcase with case studies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Projects Showcased
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. 3D Model Editor (Similar to Blender)
+A lightweight browser-based 3D modeling tool with intuitive controls for creators.
 
-## Learn More
+### 2. SaaS Service for E-commerce
+Complete backend solution for online stores with inventory, payments, and analytics.
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Multiplayer Online Game
+Real-time browser game with WebSocket connectivity and matchmaking system.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Landing Page with Call to Action
+High-conversion marketing page built with performance best practices.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 5. Electronic Educational Game (Web Connected)
+Interactive learning platform with progress tracking and admin dashboard.
 
-## Deploy on Vercel
+## Technologies Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Framework**: Next.js 15+ (App Router)
+- **Language**: TypeScript 5+
+- **Styling**: Tailwind CSS
+- **3D**: Three.js/React Three Fiber
+- **State Management**: Zustand
+- **Forms**: React Hook Form
+- **Animation**: Framer Motion
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
