@@ -51,7 +51,7 @@ export default function Companies() {
   return (
     <section id="experience" className="py-12 px-4 max-w-4xl mx-auto">
       <h2 className="text-3xl font-semibold mb-8 text-center select-none">
-        Main experience
+        Experience
       </h2>
 
       <div className="overflow-hidden">
