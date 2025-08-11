@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { connectToDatabase } from "@/lib/dbConnect";
 
 export async function POST(req: Request) {
   // CORS headers
@@ -21,14 +22,9 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log("Initializing POST /api/contact");
+    console.log("Starting POST /api/contact");
     const { name, email, message, captcha } = await req.json();
-    console.log("Received data:", {
-      name,
-      email,
-      message,
-      captcha: Boolean(captcha),
-    });
+    console.log("Received data:", { name, email, captcha: Boolean(captcha) });
 
     // Validate required fields
     if (!name || !email || !message || !captcha) {
@@ -40,10 +36,8 @@ export async function POST(req: Request) {
 
     // Validate reCAPTCHA secret key
     const secret = process.env.RECAPTCHA_SECRET_KEY;
-    console.log("RECAPTCHA_SECRET_KEY:", Boolean(secret));
-
     if (!secret) {
-      console.error("RECAPTCHA_SECRET_KEY is missing");
+      console.error("RECAPTCHA_SECRET_KEY is not configured");
       return NextResponse.json(
         { message: "Server configuration error" },
         { status: 500, headers }
@@ -71,21 +65,33 @@ export async function POST(req: Request) {
     }
 
     const captchaData = await response.json();
-    console.log("reCAPTCHA response:", captchaData);
-
     if (!captchaData.success) {
       return NextResponse.json(
-        { message: "Captcha verification failed" },
+        { message: "reCAPTCHA verification failed" },
         { status: 403, headers }
       );
     }
 
-    // Process form (e.g., send email)
+    // Connect to MongoDB and save the message
+    const { db } = await connectToDatabase();
+    const result = await db.collection("messages").insertOne({
+      name,
+      email,
+      message,
+      createdAt: new Date(),
+    });
+
+    console.log("Message saved in MongoDB with ID:", result.insertedId);
+
     console.log("Form submission:", { name, email, message });
     // await sendEmail({ name, email, message });
 
     return NextResponse.json(
-      { message: "Message sent successfully!" },
+      {
+        success: true,
+        message: "Message sent successfully",
+        mongoId: result.insertedId,
+      },
       { status: 200, headers }
     );
   } catch (error) {
