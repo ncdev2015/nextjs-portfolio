@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/dbConnect";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
-  // CORS headers
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -14,7 +16,6 @@ export async function POST(req: Request) {
   }
 
   try {
-    // Validate content type
     if (req.headers.get("content-type") !== "application/json") {
       return NextResponse.json(
         { message: "Invalid content type" },
@@ -22,11 +23,8 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log("Starting POST /api/contact");
     const { name, email, message, captcha } = await req.json();
-    console.log("Received data:", { name, email, captcha: Boolean(captcha) });
 
-    // Validate required fields
     if (!name || !email || !message || !captcha) {
       return NextResponse.json(
         { message: "All fields are required" },
@@ -34,21 +32,19 @@ export async function POST(req: Request) {
       );
     }
 
-    // Validate reCAPTCHA secret key
+    // reCAPTCHA verification
     const secret = process.env.RECAPTCHA_SECRET_KEY;
     if (!secret) {
-      console.error("RECAPTCHA_SECRET_KEY is not configured");
       return NextResponse.json(
         { message: "Server configuration error" },
         { status: 500, headers }
       );
     }
 
-    // Verify reCAPTCHA with timeout
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 5000);
 
-    const response = await fetch(
+    const captchaResponse = await fetch(
       "https://www.google.com/recaptcha/api/siteverify",
       {
         method: "POST",
@@ -60,11 +56,11 @@ export async function POST(req: Request) {
       }
     ).finally(() => clearTimeout(timeout));
 
-    if (!response.ok) {
-      throw new Error(`reCAPTCHA failed with status ${response.status}`);
+    if (!captchaResponse.ok) {
+      throw new Error(`reCAPTCHA failed with status ${captchaResponse.status}`);
     }
 
-    const captchaData = await response.json();
+    const captchaData = await captchaResponse.json();
     if (!captchaData.success) {
       return NextResponse.json(
         { message: "reCAPTCHA verification failed" },
@@ -72,7 +68,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Connect to MongoDB and save the message
+    // Save to MongoDB
     const { db } = await connectToDatabase();
     const result = await db.collection("messages").insertOne({
       name,
@@ -81,10 +77,19 @@ export async function POST(req: Request) {
       createdAt: new Date(),
     });
 
-    console.log("Message saved in MongoDB with ID:", result.insertedId);
-
-    console.log("Form submission:", { name, email, message });
-    // await sendEmail({ name, email, message });
+    // Send email with Resend
+    await resend.emails.send({
+      from: "Portfolio <onboarding@resend.dev>", // puedes usar tu dominio verificado en prod
+      to: process.env.MY_EMAIL as string,
+      subject: `Nuevo mensaje de ${name}`,
+      html: `
+        <h3>Nuevo mensaje desde el portfolio</h3>
+        <p><b>Nombre:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Mensaje:</b></p>
+        <p>${message}</p>
+      `,
+    });
 
     return NextResponse.json(
       {
