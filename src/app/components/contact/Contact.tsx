@@ -15,7 +15,7 @@ declare global {
 export default function Contact() {
   const [status, setStatus] = useState("");
   const [statusType, setStatusType] = useState<"success" | "error" | "">("");
-  const [isSubmitting, setIsSubmitting] = useState(false); // Add loading state
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Load reCAPTCHA v2 script on component mount
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Contact() {
     e.preventDefault();
     setStatusType("");
     setStatus("");
-    setIsSubmitting(true); // Set loading state to true
+    setIsSubmitting(true);
 
     try {
       const form = e.target as HTMLFormElement;
@@ -73,7 +73,7 @@ export default function Contact() {
         error instanceof Error ? error.message : "An unknown error occurred"
       );
     } finally {
-      setIsSubmitting(false); // Set loading state to false
+      setIsSubmitting(false);
       setTimeout(() => {
         setStatus("");
         setStatusType("");
@@ -83,6 +83,76 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-4 px-4 max-w-2xl mx-auto">
+      {/* Status message at top of screen */}
+      {status && (
+        <div className="fixed top-20 left-0 right-0 z-50 flex justify-center">
+          <div
+            className={`max-w-2xl w-full p-4 shadow-lg rounded ${
+              statusType === "success"
+                ? "bg-green-500 text-white"
+                : "bg-red-500 text-white"
+            }`}
+          >
+            <div className="flex justify-between items-center">
+              <div className="flex items-center">
+                {statusType === "success" ? (
+                  <svg
+                    className="w-5 h-5 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="w-5 h-5 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                )}
+                <p className="font-medium">{status}</p>
+              </div>
+              <button
+                onClick={() => {
+                  setStatus("");
+                  setStatusType("");
+                }}
+                className="text-white hover:text-gray-200 focus:outline-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <h2 className="text-3xl font-semibold mb-6 text-center">Contact</h2>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div>
@@ -175,19 +245,6 @@ export default function Contact() {
             "Send message"
           )}
         </button>
-
-        {/* Status message */}
-        {status && (
-          <div
-            className={`mt-4 text-center p-3 rounded-md ${
-              statusType === "success"
-                ? "bg-green-500 text-white"
-                : "bg-red-500 text-white"
-            }`}
-          >
-            {status}
-          </div>
-        )}
       </form>
     </section>
   );

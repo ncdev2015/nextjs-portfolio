@@ -79,7 +79,7 @@ export async function POST(req: Request) {
 
     // Send email with Resend
     await resend.emails.send({
-      from: "Web Portfolio <onboarding@noreply.dev>", // You can change this to your desired sender
+      from: "Web Portfolio <onboarding@resend.dev>", // You can change this to your desired sender
       to: process.env.MY_EMAIL as string,
       subject: `New message from ${name}`,
       html: `
