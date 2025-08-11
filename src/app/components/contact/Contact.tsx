@@ -2,6 +2,16 @@
 
 import { useState, useEffect } from "react";
 
+// Add grecaptcha type to avoid using 'any'
+declare global {
+  interface Window {
+    grecaptcha: {
+      getResponse: () => string;
+      reset: () => void;
+    };
+  }
+}
+
 export default function Contact() {
   const [status, setStatus] = useState("");
   const [statusType, setStatusType] = useState<"success" | "error" | "">("");
@@ -17,66 +27,55 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatusType("");
+    setStatus("");
 
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
+    try {
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+      const token = window.grecaptcha.getResponse();
 
-    // Get token from reCAPTCHA v2 checkbox
-    // Define grecaptcha type on window
-    interface Grecaptcha {
-      getResponse: () => string;
-      reset: () => void;
-    }
-    interface WindowWithGrecaptcha extends Window {
-      grecaptcha: Grecaptcha;
-    }
-    const token = (
-      window as unknown as WindowWithGrecaptcha
-    ).grecaptcha.getResponse();
+      if (!token) {
+        setStatusType("error");
+        setStatus("⚠️ Please verify you are not a robot.");
+        return;
+      }
 
-    if (!token) {
-      setStatusType("error");
-      setStatus("⚠️ Please verify you are not a robot.");
-      return;
-    }
+      // Usa ruta relativa en lugar de NEXT_PUBLIC_SITE_URL
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          message: formData.get("message"),
+          captcha: token,
+        }),
+      });
+      window.grecaptcha.reset();
+      const result = await res.json();
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/contact`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: formData.get("name"),
-        email: formData.get("email"),
-        message: formData.get("message"),
-        captcha: token,
-      }),
-    });
+      if (!res.ok) {
+        throw new Error(result.message || "Failed to send message");
+      }
 
-    if (!res.ok) {
-      const errorData = await res.json();
-      setStatusType("error");
-      setStatus(`❌ ${errorData.message || "Failed to send the message."}`);
-      return;
-    }
-
-    if (res.ok) {
       setStatusType("success");
-      setStatus("Message sent successfully!");
+      setStatus(result.message);
       form.reset();
-      (
-        window as unknown as Window & { grecaptcha: { reset: () => void } }
-      ).grecaptcha.reset();
-    } else {
+      window.grecaptcha.reset();
+    } catch (error) {
       setStatusType("error");
-      setStatus("Failed to send the message. Please try again.");
+      setStatus(
+        error instanceof Error ? error.message : "An unknown error occurred"
+      );
+    } finally {
+      setTimeout(() => {
+        setStatus("");
+        setStatusType("");
+      }, 5000);
     }
-
-    // Auto-hide status after 5 seconds
-    setTimeout(() => {
-      setStatus("");
-      setStatusType("");
-    }, 5000);
   };
 
   return (
