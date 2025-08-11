@@ -41,7 +41,6 @@ export default function Contact() {
         return;
       }
 
-      // Usa ruta relativa en lugar de NEXT_PUBLIC_SITE_URL
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
