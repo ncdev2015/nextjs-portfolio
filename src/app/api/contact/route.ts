@@ -79,14 +79,14 @@ export async function POST(req: Request) {
 
     // Send email with Resend
     await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>", // puedes usar tu dominio verificado en prod
+      from: "Web Portfolio <onboarding@noreply.dev>", // You can change this to your desired sender
       to: process.env.MY_EMAIL as string,
-      subject: `Nuevo mensaje de ${name}`,
+      subject: `New message from ${name}`,
       html: `
-        <h3>Nuevo mensaje desde el portfolio</h3>
-        <p><b>Nombre:</b> ${name}</p>
+        <h3>New message from web portfolio</h3>
+        <p><b>Name:</b> ${name}</p>
         <p><b>Email:</b> ${email}</p>
-        <p><b>Mensaje:</b></p>
+        <p><b>Message:</b></p>
         <p>${message}</p>
       `,
     });
