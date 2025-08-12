@@ -49,8 +49,9 @@ const techStack: TechCategory[] = [
         description: "Opinionated web framework for fast backend development.",
       },
       {
-        name: "Flask / FastAPI",
-        description: "Lightweight Python frameworks for APIs and web services.",
+        name: "FastAPI",
+        description:
+          "A modern, fast Python web framework for building APIs with automatic interactive documentation.",
       },
     ],
   },
@@ -139,11 +140,11 @@ export default function TechStack() {
                 return (
                   <div key={tech.name} className="relative">
                     <div
-                      className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 text-center hover:bg-blue-100 hover:border-gray-300 transition-colors duration-200 cursor-pointer select-none"
+                      className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 text-center hover:bg-blue-100 hover:border-gray-300 transition-colors duration-200 cursor-pointer select-none parent group"
                       onClick={() => setOpenIndex(openIndex === id ? null : id)}
                     >
                       {tech.icon && <div className="mb-2">{tech.icon}</div>}
-                      <p className="text-sm font-medium text-gray-800">
+                      <p className="text-sm font-medium text-gray-800 child-text group-hover:text-blue-600">
                         {tech.name}
                       </p>
                     </div>
