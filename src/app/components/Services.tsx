@@ -1,11 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { faker } from "@faker-js/faker";
 
 export default function Services() {
-  faker.seed(10);
-
   const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>(
     {}
   );
