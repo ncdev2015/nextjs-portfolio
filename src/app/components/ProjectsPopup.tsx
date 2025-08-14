@@ -27,7 +27,7 @@ const ProjectsPopup = ({
     const projectsData: Project[] = [
       {
         id: "1",
-        title: "3D Model Editor (Similar to Blender)",
+        title: "3D Model Online Editor",
         description:
           "A lightweight browser-based 3D modeling tool with intuitive controls for creators.",
         features: [
@@ -36,7 +36,7 @@ const ProjectsPopup = ({
           "Real-time rendering",
           "Export to common 3D formats",
         ],
-        imageUrl: "/assets/images/3d-editor.png",
+        imageUrl: "/assets/images/3d-editor.webp",
         tags: [
           "Three.js",
           "WebGL",
@@ -57,7 +57,7 @@ const ProjectsPopup = ({
           "Real-time analytics dashboard",
           "Scalable cloud architecture",
         ],
-        imageUrl: "/assets/images/sass-ecom.png",
+        imageUrl: "/assets/images/sass-ecom.webp",
         tags: ["Node.js", "React", "MongoDB", "AWS", "Stripe API"],
       },
       {
@@ -71,7 +71,7 @@ const ProjectsPopup = ({
           "In-game chat system",
           "Cross-platform compatibility",
         ],
-        imageUrl: "/assets/images/multiplayer-game.png",
+        imageUrl: "/assets/images/multiplayer-game.webp",
         tags: ["Socket.io", "Node.js", "Canvas", "Redis", "Real-time"],
       },
       {
@@ -85,7 +85,7 @@ const ProjectsPopup = ({
           "SEO optimized structure",
           "Responsive mobile design",
         ],
-        imageUrl: "/assets/images/landing-page.png",
+        imageUrl: "/assets/images/landing-page.webp",
         tags: [
           "Next.js",
           "Tailwind CSS",
@@ -105,7 +105,7 @@ const ProjectsPopup = ({
           "Teacher/admin dashboard",
           "Gamification elements",
         ],
-        imageUrl: "/assets/images/edu-game.png",
+        imageUrl: "/assets/images/edu-game.webp",
         tags: [
           "React",
           "Firebase",
@@ -127,7 +127,7 @@ const ProjectsPopup = ({
           "Collaborative learning tools",
           "Customizable teaching modules",
         ],
-        imageUrl: "/assets/images/stem-whiteboard.png",
+        imageUrl: "/assets/images/stem-whiteboard.webp",
         tags: [
           "React",
           "Canvas API",
@@ -172,8 +172,8 @@ const ProjectsPopup = ({
             flex flex-col
             shadow-xl
             border border-gray-200 dark:border-gray-700
-            mt-0 sm:mt-0  /* Top margin only on mobile */
-            mb-0  /* Bottom margin for spacing */
+            mt-2 sm:mt-0  /* Top margin only on mobile */
+            mb-2  /* Bottom margin for spacing */
         `}
       >
         {/* Header */}
