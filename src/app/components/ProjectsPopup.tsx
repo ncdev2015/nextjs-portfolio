@@ -96,9 +96,9 @@ const ProjectsPopup = ({
       },
       {
         id: "5",
-        title: "Electronic Educational Game (Web Connected)",
+        title: "Electronic game for children and young people",
         description:
-          "Interactive learning platform with progress tracking and admin dashboard.",
+          "Interactive platform focused on learning mathematics, physics, and computer science..",
         features: [
           "Adaptive learning paths",
           "Real-time progress tracking",
@@ -112,9 +112,7 @@ const ProjectsPopup = ({
           "Chart.js",
           "Gamification",
           "Progress Tracking",
-          "Microcontrollers",
-          "Display LCD",
-          "Buttons and Sensors",
+          "Unity",
         ],
       },
       {
@@ -130,7 +128,14 @@ const ProjectsPopup = ({
           "Customizable teaching modules",
         ],
         imageUrl: "/assets/images/stem-whiteboard.png",
-        tags: ["React", "Canvas API", "MathJax", "WebGL", "Firebase"],
+        tags: [
+          "React",
+          "Canvas API",
+          "MathJax",
+          "WebGL",
+          "Firebase",
+          "Three.js",
+        ],
       },
     ];
 
