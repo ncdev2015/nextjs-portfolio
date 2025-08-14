@@ -27,9 +27,9 @@ export default function Hero() {
       <div className="mt-6 text-blue-400 font-bold">
         <button
           onClick={() => setIsProjectsOpen(true)}
-          className="inline-flex items-center text-blue-400 hover:underline font-medium"
+          className="inline-flex items-center text-blue-400 hover:underline font-medium cursor-pointer"
         >
-          Projects →
+          Projects showcase
         </button>
       </div>
 
