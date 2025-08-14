@@ -155,8 +155,27 @@ const ProjectsPopup = ({
   const currentProject = projects[currentIndex];
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
-      <div className="bg-gray-100 dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+    <div className="fixed inset-0 bg-black/80 flex items-start sm:items-center justify-center z-50 p-4 overflow-y-auto">
+      <div
+        className={`
+            bg-gray-100 dark:bg-gray-800 rounded-lg
+            w-[95vw]  /* Narrower on mobile */
+            sm:w-[90vw]  /* Small tablets */
+            md:w-[85vw]  /* Tablets in portrait */
+            lg:w-[75vw]  /* Tablets landscape/Laptops */
+            xl:w-[65vw]  /* Large screens */
+            2xl:w-[55vw] /* Extra large screens */
+            max-w-4xl  /* Maximum width limit */
+            max-h-[85vh]  /* Reduced height for mobile */
+            sm:max-h-[90vh]  /* Normal height on tablets+ */
+            overflow-hidden
+            flex flex-col
+            shadow-xl
+            border border-gray-200 dark:border-gray-700
+            mt-0 sm:mt-0  /* Top margin only on mobile */
+            mb-0  /* Bottom margin for spacing */
+        `}
+      >
         {/* Header */}
         <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
           <h2 className="text-xl font-bold text-gray-800 dark:text-white">
