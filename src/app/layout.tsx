@@ -1,13 +1,17 @@
-import Script from 'next/script';
+import Script from "next/script";
 
-import './globals.css';
+import "./globals.css";
 
 export const metadata = {
-  title: 'Nelson C. - Porfolio',
-  description: 'Welcome to my Website',
+  title: "Nelson C. - Portfolio",
+  description: "Projects showcase and services offered by Nelson C.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>
