@@ -31,6 +31,9 @@ High-conversion marketing page built with performance best practices.
 ### 5. Electronic Educational Game (Web Connected)
 Interactive learning platform with progress tracking and admin dashboard.
 
+### 6. Educational Whiteboard for STEM
+Interactive whiteboard with graphs, models and simulations for learning math, physics and computer science.
+
 ## Technologies Used
 
 - **Framework**: Next.js 15+ (App Router)

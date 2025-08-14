@@ -37,7 +37,14 @@ const ProjectsPopup = ({
           "Export to common 3D formats",
         ],
         imageUrl: "/assets/images/3d-editor.png",
-        tags: ["Three.js", "WebGL", "React", "TypeScript"],
+        tags: [
+          "Three.js",
+          "WebGL",
+          "React",
+          "TypeScript",
+          "Next.js",
+          "MongoDB",
+        ],
       },
       {
         id: "2",
@@ -105,7 +112,25 @@ const ProjectsPopup = ({
           "Chart.js",
           "Gamification",
           "Progress Tracking",
+          "Microcontrollers",
+          "Display LCD",
+          "Buttons and Sensors",
         ],
+      },
+      {
+        id: "6",
+        title: "Educational Whiteboard for STEM",
+        description:
+          "Interactive whiteboard with models, graphs and simulations for learning math, physics and computer science.",
+        features: [
+          "Interactive mathematical models",
+          "Physics simulations engine",
+          "Programming concepts visualizer",
+          "Collaborative learning tools",
+          "Customizable teaching modules",
+        ],
+        imageUrl: "/assets/images/stem-whiteboard.png",
+        tags: ["React", "Canvas API", "MathJax", "WebGL", "Firebase"],
       },
     ];
 
