@@ -28,8 +28,8 @@ Real-time browser game with WebSocket connectivity and matchmaking system.
 ### 4. Landing Page with Call to Action
 High-conversion marketing page built with performance best practices.
 
-### 5. Electronic Educational Game (Web Connected)
-Interactive learning platform with progress tracking and admin dashboard.
+### 6. Electronic game for children and young people
+Interactive platform focused on learning mathematics, physics, and computer science.
 
 ### 6. Educational Whiteboard for STEM
 Interactive whiteboard with graphs, models and simulations for learning math, physics and computer science.
