@@ -1,6 +1,11 @@
 "use client";
 
+import { useState } from "react";
+import ProjectsPopup from "@/app/components/ProjectsPopup";
+
 export default function Hero() {
+  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+
   const profileDescription1 =
     "I'm a software engineer with a strong foundation in electronics, web development, and game programming. I love emerging technologies and how they can be applied to solve real-world problems.";
   const profileDescription2 =
@@ -20,13 +25,19 @@ export default function Hero() {
       <p className="mb-4">{profileDescription2}</p>
 
       <div className="mt-6 text-blue-400 font-bold">
-        <a
-          href="#"
+        <button
+          onClick={() => setIsProjectsOpen(true)}
           className="inline-flex items-center text-blue-400 hover:underline font-medium"
         >
           Projects →
-        </a>
+        </button>
       </div>
+
+      {/* Projects popup */}
+      <ProjectsPopup
+        isOpen={isProjectsOpen}
+        onClose={() => setIsProjectsOpen(false)}
+      />
     </section>
   );
 }
