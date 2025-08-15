@@ -43,8 +43,8 @@ export default function ParticlesBackground() {
     const camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
-      0.1,
-      1000
+      5,
+      550
     );
 
     const renderer = new THREE.WebGLRenderer({
@@ -67,7 +67,7 @@ export default function ParticlesBackground() {
     mountRef.current.appendChild(renderer.domElement);
 
     // Reduce particles for better performance
-    const particleCount = window.innerHeight < 800 ? 500 : 1000;
+    const particleCount = window.innerHeight < 800 ? 500 : 800;
     const positions = new Float32Array(particleCount * 3);
     const sizes = new Float32Array(particleCount);
     const velocities = new Float32Array(particleCount * 3);
@@ -89,7 +89,7 @@ export default function ParticlesBackground() {
       positions[i * 3 + 2] = z;
 
       // More efficient velocities
-      const speed = 0.1 + Math.random() * 0.2;
+      const speed = 0.1 + Math.random() * 0.1;
       const angle = Math.random() * Math.PI * 2;
       velocities[i * 3] = Math.cos(angle) * speed;
       velocities[i * 3 + 1] = Math.sin(angle) * speed;
