@@ -29,7 +29,7 @@ export default function Hero() {
           onClick={() => setIsProjectsOpen(true)}
           className="inline-flex items-center text-blue-400 hover:underline font-medium cursor-pointer"
         >
-          Projects showcase
+          Projects Showcase
         </button>
       </div>
 
