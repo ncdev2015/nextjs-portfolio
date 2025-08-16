@@ -28,7 +28,7 @@ export default function Companies() {
     {
       src: "/assets/icons/ba.png",
       alt: "BA",
-      className: "w-32",
+      className: "w-31",
       width: 128,
       height: 40,
     },
@@ -42,7 +42,14 @@ export default function Companies() {
     {
       src: "/assets/icons/alten.png",
       alt: "Alten Italy",
-      className: "w-35",
+      className: "w-34",
+      width: 140,
+      height: 40,
+    },
+    {
+      src: "/assets/icons/godot.png",
+      alt: "Godot Engine",
+      className: "w-29",
       width: 140,
       height: 40,
     },
